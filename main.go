@@ -9,6 +9,18 @@ func main() {
 	var matr [3][3]int
 	help.Graph(matr)
 	for {
+		winner := help.Win(matr)
+		if winner == 1 {
+			fmt.Printf("PLAYER 'X' WIN")
+			break
+		}
+		if winner == 2 {
+			fmt.Printf("PLAYER '0' WIN")
+			break
+		} else if help.Draw(matr) {
+			fmt.Printf("DRAW")
+			break
+		}
 		col, line, choice := help.Input()
 		var player int
 		if choice == "X" {
@@ -25,5 +37,7 @@ func main() {
 			return
 		}
 		help.Graph(matr)
+
 	}
+
 }

@@ -49,9 +49,43 @@ func Update(matr *[3][3]int, line int, col int, player int) bool {
 		return false
 	}
 	if matr[col][line] != 0 {
-		fmt.Printf("EROR// CELL IS ALREADY FULL!\n")
+		fmt.Println("EROR// CELL IS ALREADY FULL!\n")
 		return false
 	}
 	matr[line][col] = player
+	return true
+}
+
+func Win(matr [3][3]int) int {
+
+	for i := 0; i < 3; i++ {
+		if matr[i][0] != 0 && matr[i][0] == matr[i][1] && matr[i][0] == matr[i][2] {
+			return matr[i][0]
+		}
+		if matr[0][i] != 0 && matr[0][i] == matr[1][i] && matr[0][i] == matr[2][i] {
+			return matr[0][i]
+		}
+	}
+	// '\'
+	if matr[0][0] != 0 && matr[0][0] == matr[1][1] && matr[1][1] == matr[2][2] {
+		return matr[0][0]
+	}
+	// '/'
+	if matr[0][2] != 0 && matr[0][2] == matr[1][1] && matr[1][1] == matr[2][2] {
+		return matr[0][2]
+	}
+	return 0
+}
+func Draw(matr [3][3]int) bool {
+	if Win(matr) != 0 {
+		return false
+	}
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 3; j++ {
+			if matr[i][j] == 0 {
+				return false
+			}
+		}
+	}
 	return true
 }
