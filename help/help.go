@@ -48,7 +48,7 @@ func Update(matr *[3][3]int, line int, col int, player int) bool {
 		fmt.Println("ERROR. ENTER A VALID COORDS")
 		return false
 	}
-	if matr[col][line] != 0 {
+	if matr[line][col] != 0 {
 		fmt.Println("EROR// CELL IS ALREADY FULL!\n")
 		return false
 	}
